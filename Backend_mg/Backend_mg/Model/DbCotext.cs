@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Backend_mg.Model;
+using System.Collections.Generic;
 namespace Backend_mg.Model
 {
     public class DbCotext : DbContext
@@ -13,12 +14,16 @@ namespace Backend_mg.Model
 
         public DbSet<QuizQuestions> QuizQuestions { get; set; }
 
+        public DbSet<IconMaster> IconMaster { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ContactInformation>().ToTable("ContactInformation");
             modelBuilder.Entity<Dynamic_input_types>().ToTable("Dynamic_input_types");
             modelBuilder.Entity<QuizQuestions>().ToTable("QuizQuestions");
+
+            modelBuilder.Entity<IconMaster>().ToTable("IconMaster");
         }
 
     }
