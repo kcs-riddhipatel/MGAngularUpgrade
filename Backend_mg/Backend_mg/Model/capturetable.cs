@@ -1,7 +1,10 @@
-﻿namespace Backend_mg.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Backend_mg.Model
 {
     public class capturetable
     {
+        [Key]
         public int Id { get; set; }
         public int ContactId { get; set; } // Foreign key reference to ContactInformation table
         public string? Question1 { get; set; }

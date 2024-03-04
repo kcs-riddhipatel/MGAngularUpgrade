@@ -1,7 +1,14 @@
 import { Component, OnInit, Input, EventEmitter, Output  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { AuthService } from 'src/app/services/auth.service';
 
+interface IconItem {
+  icon: string;
+  text: string;
+  className: string;
+  count: number;
+}
 @Component({
   selector: 'app-new-slide-page',
   templateUrl: './new-slide-page.component.html',
@@ -17,13 +24,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
       ])
     ])
   ]
-  
+ 
 })
+
 export class NewSlidePageComponent{
   @Input() image: any;
   @Input() activityName!: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router,private service: AuthService) { }
   @Output() close = new EventEmitter<void>();
 
   closePopup() {
@@ -32,14 +40,11 @@ export class NewSlidePageComponent{
   GetContatlist(){
     this.router.navigate(['/contactlist']);
   }
-
-    flexItems = [
-      { icon: 'assignment', text: 'Capture', count: 10 , className: 'captureicon' },
-      { icon: 'comment', text: 'Feedback', count: 5 , className: 'Feedbackicon'},
-      { icon: 'assessment', text: 'Analysis', count: 0 , className:'Analysisicon'},
-      { icon: 'description', text: 'Draft', count: 3 ,className: 'Drafticon'},
-      { icon: 'description', text: 'Draft', count: 3 ,className: 'Drafticon'}
-    ];
+  flexItems: IconItem[] = [];
   
-  
+      ngOnInit(): void {
+        this.service.GetIconMaster().subscribe((fields: IconItem[]) => {
+          this.flexItems = fields;
+        });
+      }
 }

@@ -17,9 +17,9 @@ namespace Backend_mg.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ContactInformation>>> GetIconMaster()
+        public async Task<ActionResult<IEnumerable<IconMaster>>> GetIconMaster()
         {
-            return await _context.ContactInformation.Where(contact => contact.IsDeleted == false).ToListAsync();
+            return await _context.IconMaster.ToListAsync();
         }
     }
 }
