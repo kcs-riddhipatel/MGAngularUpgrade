@@ -5,7 +5,7 @@
     right: 0;
     bottom: 0;
   }
-
+  
   .new-slide-page {
     position: fixed;
     top: 62px;
@@ -14,7 +14,6 @@
     width: 35%;
     z-index: 1000;
     overflow-y: auto;
-    z-index: 1000;
     background-color: rgb(3, 57, 78);
   }
   
@@ -23,11 +22,11 @@
       width: 100%;
     }
   }
-
+  
   .slide-content {
     padding: 20px;
   }
-
+  
   .close-button {
     position: absolute;
     top: 10px;
@@ -37,7 +36,7 @@
     cursor: pointer;
     color: rgb(185, 185, 185);
   }
-
+  
   .mat-icon {
     -webkit-user-select: none;
     user-select: none;
@@ -48,11 +47,11 @@
     width: 24px;
     overflow: hidden;
   }
-
+  
   .close-button mat-icon {
     font-size: 26px;
   }
-
+  
   .activitytxt {
     text-align: center;
     font-size: 15px;
@@ -61,7 +60,7 @@
     color: white;
     margin-top: 10px;
   }
-
+  
   .circle-container {
     width: 120px;
     height: 120px;
@@ -73,14 +72,12 @@
     padding: 10px;
     margin: 0 auto;
   }
-
-
+  
   .circle-container img {
     max-width: 70%;
     max-height: 70%;
   }
-
-
+  
   .horizontal-line {
     height: 1px;
     width: 0;
@@ -88,122 +85,124 @@
     margin-top: 10px;
     animation: spread 2s forwards 1s;
   }
-
+  
   @keyframes spread {
     from {
       width: 0;
       margin-left: 50%;
     }
-
+  
     to {
       width: 100%;
       height: 1px;
       margin-left: 0;
     }
   }
-
+  
   .row-container {
     display: flex;
     justify-content: center;
     width: 100%;
     margin-top: 10px;
   }
-
+  
   .row-container .count-container {
     margin: 0 30px;
   }
-
+  
   .row-container .count-container span {
     margin-left: 5px;
   }
-
-
+  
   .vertical-line {
     width: 1px;
     height: 80px;
     background-color: white;
   }
-
+  
   .flex-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 119px; */
   }
-
+  
   .flex-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 20px;
   }
-
+  
   .count-container {
     display: flex;
     align-items: center;
   }
-
+  
   .flex-item p {
     margin-top: 10px;
   }
-
+  
   .count-container span {
     margin-left: 5px;
   }
-
+  
   .txt {
     font-size: 15px;
     color: white;
   }
-
+  
   .out {
     color: red;
     font-size: 18px;
   }
-
+  
   .in {
     color: rgb(57, 200, 57);
     font-size: 18px;
   }
-
+  
   .outtext {
     font-size: 15px;
     color: red;
     margin-right: 10px;
     font-weight: bold;
   }
-
+  
   .intext {
     font-size: 15px;
     color: rgb(20, 169, 20);
     margin-right: 10px;
     font-weight: bold;
   }
-
+  
   .count {
-    border: 1px solid black;
     padding: 0px 15px;
     border-radius: 30px;
-    background-color: gray;
+    background-color: red;
     color: white;
   }
-
+  .countt {
+    padding: 0px 15px;
+    border-radius: 30px;
+    background-color: rgb(224, 222, 222,0.6);
+    color: white;
+  }
   .chat {
     color: blue;
   }
-
+  
   .pendinglist {
     color: green;
   }
-
+  
   .file {
     color: red;
   }
-
+  
   .text {
     color: rgb(183, 180, 180);
   }
-
+  
   .container {
     display: flex;
     justify-content: center;
@@ -211,7 +210,7 @@
     height: 15vh;
     padding: 0 160px;
   }
-
+  
   .flex-container-2x2 {
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +218,7 @@
     width: 100%;
     margin-top: 119px;
   }
-
+  
   .flex-item-2x2 {
     flex: 1 0 calc(50% - 30px);
     padding: 5px;
@@ -232,13 +231,14 @@
     margin: 5px;
     flex-direction: column;
   }
-
+  
+  
   .count-container {
     display: flex;
     align-items: center;
   }
-
-  .count-container .icon {
+  
+  .icon {
     font-size: 24px;
     padding: 5px;
     width: 34px;
@@ -247,48 +247,99 @@
     color: white;
     border-radius: 20%;
   }
-
+  
   .captureicon {
     background-color: rgb(48, 181, 205);
+    color: white;
   }
-
+  
   .Feedbackicon {
     background-color: rgb(9, 115, 186);
+    color: white;
   }
-
+  
   .Analysisicon {
     background-color: rgb(25, 196, 73);
-
+    color: white;
   }
-
+  
   .Drafticon {
     background-color: rgb(20, 158, 139);
+    color: white;
   }
-
+  
   .count-container .txtt {
     font-size: 15px;
     padding: 0px 10px;
     border-radius: 30px;
     background-color: gray;
     color: white;
-    background-color: red;
     margin-left: 35px;
   }
-
+  
   .textt {
     font-size: 14px;
     color: white;
     margin: 0;
   }
-
+  
   @media (max-width: 768px) {
     .flex-container-2x2 {
       margin-top: 119px;
     }
-
+  
     .flex-item-2x2 {
       flex: 1 0 calc(25% - 50px);
       margin: 5px;
-      
     }
   }
+  .flex-containerr {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  /* .flex-itemm {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    border: 1px solid red;
+  } */
+
+  .flex-itemm {
+    flex: 1 1 25%; /* Each item takes up 25% of the available space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    margin: 10px; /* Add margin to create space between items */
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    background-color: rgb(186, 184, 184,0.5);
+  }
+  
+.count-containerr {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.txt {
+  font-size: 18px;
+  margin-right: 15px;
+}
+
+.count {
+  font-size: 18px;
+}
+
+

@@ -2,9 +2,9 @@
   <div class="container" [@fadeInOut]="showNewComponent ? 'in' : 'out'">
     <div *ngFor="let image of images" class="box" (click)="onImageClick(image)">
       <div class="round-image"><img [src]="image.src" /></div>
-      <p>{{ image.activityName }}</p>
-      <p class="txt"><mat-icon>chat</mat-icon>Chat 1</p>
-      <p class="txt"><mat-icon>file_copy</mat-icon>Unresolved 45</p>
+      <p class="activitynametext">{{ image.activityName }}</p>
+      <p class="txt"><mat-icon class="chat">chat</mat-icon>Chat </p>
+      <p class="txt"><mat-icon class="filecopy">file_copy</mat-icon>Unresolved </p>
     </div>
   </div>
   <div *ngIf="showNewComponent" class="new-component">
