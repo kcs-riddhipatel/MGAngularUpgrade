@@ -69,5 +69,8 @@ export class AuthService {
   GetDynamicFields(): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/DynamicFields`);
   }
+  GetIconMaster(): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}/IconMaster`);
+  }
 }
 
