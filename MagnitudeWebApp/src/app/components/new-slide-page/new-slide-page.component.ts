@@ -32,4 +32,14 @@ export class NewSlidePageComponent{
   GetContatlist(){
     this.router.navigate(['/contactlist']);
   }
+
+    flexItems = [
+      { icon: 'assignment', text: 'Capture', count: 10 , className: 'captureicon' },
+      { icon: 'comment', text: 'Feedback', count: 5 , className: 'Feedbackicon'},
+      { icon: 'assessment', text: 'Analysis', count: 0 , className:'Analysisicon'},
+      { icon: 'description', text: 'Draft', count: 3 ,className: 'Drafticon'},
+      { icon: 'description', text: 'Draft', count: 3 ,className: 'Drafticon'}
+    ];
+  
+  
 }

@@ -36,47 +36,24 @@
       <div class="count-container">
         <mat-icon class="out">launch</mat-icon>
         <span class="outtext">OUT</span>
-        <span class="txt count">3</span>
+        <span class="txt countt">3</span>
       </div>
       <div class="count-container">
         <mat-icon class="in">transit_enterexit</mat-icon>
         <span class="intext">IN</span>
-        <span class="txt count">4</span>
+        <span class="txt countt">4</span>
       </div>
     </div>
-    <p class="activitytxt" style="margin-top: 30px;">Last 30 Days</p>
+    <p class="activitytxt" style="margin-top: 100px;">Last 30 Days</p>
     <div class="horizontal-line"></div>
-    <div class="container">
-        <div class="flex-container-2x2">
-          <div class="flex-item-2x2">
-            <div class="count-container">
-              <mat-icon class="icon captureicon">assignment</mat-icon>
-              <p class="textt" (click)="GetContatlist()">Capture</p>
-              <!-- <span class="txtt">12</span> -->
-            </div>
-          </div>
-          <div class="flex-item-2x2">
-            <div class="count-container">
-              <mat-icon class="icon Feedbackicon">comment</mat-icon>
-              <p class="textt">Feedback</p>
-              <!-- <span class="txtt">12</span> -->
-            </div>
-          </div>
-          <div class="flex-item-2x2">
-            <div class="count-container">
-              <mat-icon class="icon Analysisicon">assessment</mat-icon>
-              <p class="textt">Analysis</p>
-              <!-- <span class="txtt">12</span> -->
-            </div>
-          </div>
-          <div class="flex-item-2x2">
-            <div class="count-container">
-              <mat-icon class="icon Drafticon">description</mat-icon>
-              <p class="textt">Draft</p>
-              <span class="txtt">12</span>
-            </div>
-          </div>
+    <div class="flex-containerr">
+      <div class="flex-itemm" *ngFor="let item of flexItems">
+        <div class="count-containerr">
+          <mat-icon class="icon" [ngClass]="item.className">{{ item.icon }}</mat-icon>
+          <span class="txt">{{ item.text }}</span>
+          <span class="count">{{ item.count }}</span>
         </div>
-      </div>      
+      </div>
+    </div>    
   </div>
 </div>
