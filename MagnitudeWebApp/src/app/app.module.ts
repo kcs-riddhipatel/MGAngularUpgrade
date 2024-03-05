@@ -23,6 +23,7 @@ import { ContacteditComponent } from './components/contact/contactedit/contacted
 import { CaptureformComponent } from './components/contact/captureform/captureform.component';
 import { NewSlidePageComponent } from './components/new-slide-page/new-slide-page.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
     MatIconModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    NgHttpLoaderModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

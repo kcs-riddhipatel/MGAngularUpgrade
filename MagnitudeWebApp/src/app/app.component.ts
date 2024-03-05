@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
+import { Spinkit } from 'ng-http-loader';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   title = 'MagnitudeWebApp';
   showHeaderAndFooter: boolean = true;
-
+  spinnerStyle = Spinkit;
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.pipe(
       filter((event): event is NavigationEnd => event instanceof NavigationEnd)

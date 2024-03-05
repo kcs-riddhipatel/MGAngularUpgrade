@@ -1,60 +1,50 @@
-<br>
-<div class=" static-contact-info">
-    <h5>Contact Info</h5>
-    Name : <span id="fname" class="LiveParagraph">{{ newContact.firstName }}</span>
-    <br>
-    Email : <span id="fname" class="LiveParagraph">{{ newContact.email }}</span>
-</div>
-
-<br>
-
 <div class="container">
-    <h2>Capture Form</h2>
-    <div class="container1">
-    <div *ngIf="contactList.length > 0; else noContacts">
-     
-        <form #contactForm="ngForm" (ngSubmit)="contactForm.valid && addCapture()">
-        <ng-container *ngFor="let contact of contactList">
-            <div class="data-row">
-                <div class="">
-                    <label>{{ contact.questionText }}</label>
-                    <input [type]="getInputType(contact.inputTypeID)" class="" placeholder="enter {{ contact.questionText }}" required *ngIf="getInputType(contact.inputTypeID) === 'checkbox' || getInputType(contact.inputTypeID) !== ''">
+    <div class="ContactInfo">
 
-                    
-                </div>
-                
-                <!-- <ng-container *ngIf="getInputType(contact.inputTypeID) === ''">
-                    <label>
-                        <input type="radio" name="gender" value="male"> Male
-                   
-                        <input type="radio" name="gender" value="female"> Female
-                   
-                        <input type="radio" name="gender" value="other"> Other
-                    </label>
-                </ng-container> -->
-                    <label *ngIf="getInputType(contact.inputTypeID) === 'radio'">
-                      <input type="radio" name="gender" value="male"> Male
-                      <input type="radio" name="gender" value="female"> Female
-                      <input type="radio" name="gender" value="other"> Other
-                    </label>
-                    <div *ngIf="getInputType(contact.inputTypeID) === 'checkbox'">
-                      <label>
-                        <input type="checkbox" name="agree" value="agree"> I agree
-                        <input type="checkbox" name="agree" value="agree"> Not like this
-                        <input type="checkbox" name="agree" value="agree"> Other 
-                      </label>
-                    </div>
-            </div>
-        </ng-container>
-        
-        <input type="submit" class="btn btn-danger" value="Submit">
-        </form>
+        <div class="contact-icon">
+            <mat-icon>assignment_ind</mat-icon>
+        </div>
+        <div class="contact-details">
+
+            <p><strong>Name :&nbsp;</strong> <span id="fname">{{ newContact.firstName }}</span></p>
+            <p><strong>Email :&nbsp;</strong> <span id="email">{{ newContact.email }}</span></p>
+        </div>
     </div>
-    
-    
+    <div class="cpt">
+        <h2 class="capture-heading">
+            <mat-icon>assignment</mat-icon>Capture Form
+        </h2>
+
+        <div class="form-container">
+            <div *ngIf="contactList.length > 0; else noContacts">
+                <form #contactForm="ngForm" (ngSubmit)="contactForm.valid && addCapture()">
+                    <ng-container *ngFor="let contact of contactList">
+                        <div class="form-item">
+                            <label>{{ contact.questionText }}</label>
+                            <ng-container *ngIf="getInputType(contact.inputTypeID) === 'radio'">
+                                <input type="radio" name="gender" value="male"> Male
+                                <input type="radio" name="gender" value="female"> Female
+                                <input type="radio" name="gender" value="other"> Other
+                            </ng-container>
+                            <ng-container *ngIf="getInputType(contact.inputTypeID) === 'checkbox'">
+                                <input type="checkbox" name="agree" value="agree"> I agree
+                                <input type="checkbox" name="agree" value="agree"> Not like this
+                                <input type="checkbox" name="agree" value="agree"> Other
+                            </ng-container>
+                            <ng-container
+                                *ngIf="getInputType(contact.inputTypeID) !== 'radio' && getInputType(contact.inputTypeID) !== 'checkbox'">
+                                <input [type]="getInputType(contact.inputTypeID)" class="form-input"
+                                    placeholder="{{ contact.questionText }}" required>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <input type="submit" class="btn btn-danger" value="Submit">
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <ng-template #noContacts>
+        <p>No contacts available.</p>
+    </ng-template>
 </div>
-
-
-<ng-template #noContacts>
-    <p>No contacts available.</p>
-  </ng-template>

@@ -29,7 +29,6 @@ export class CaptureformComponent {
         },
       );
       this.Contact.GetDynamicFields().subscribe((fields: any[]) => {
-        debugger;
         this.InputTypes = fields;
         console.log("aa : ", this.InputTypes)
       });
@@ -48,7 +47,6 @@ export class CaptureformComponent {
   }
   
   getInputType(inputTypeID: number): string {
-    debugger
     console.log(this.InputTypes)
     this.matchingField = this.InputTypes.find(field => field.id === inputTypeID);
 
