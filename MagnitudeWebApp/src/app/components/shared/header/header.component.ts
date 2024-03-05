@@ -9,7 +9,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
   constructor(private authService: AuthService,private router: Router) { }
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
@@ -18,5 +17,16 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/activity']);
   }
-  
+  isActivityScreen() {
+    return  this.router.url == '/activity' || '/analytics' ;
+  }
+  isAnalyticsScreen(){
+    return this.router.url == '/activity' || '/analytics';
+  }
+  Activityload(){
+    this.router.navigate(['/activity']);
+  }
+  Analyticsload(){
+    this.router.navigate(['/analytics']);
+  }
 }

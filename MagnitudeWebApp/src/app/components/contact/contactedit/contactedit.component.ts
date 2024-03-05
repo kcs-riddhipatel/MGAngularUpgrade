@@ -40,7 +40,9 @@ export class ContacteditComponent {
         }
       );
     }
- 
+    goBack(){
+      this.router.navigate(['/contactlist']); 
+    }
   
 }
 

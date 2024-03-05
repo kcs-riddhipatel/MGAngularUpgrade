@@ -10,6 +10,7 @@ import { ContacteditComponent } from './components/contact/contactedit/contacted
 import { CaptureformComponent } from './components/contact/captureform/captureform.component';
 import { ContactsComponent } from './components/contact/contacts/contacts.component';
 import { NewSlidePageComponent } from './components/new-slide-page/new-slide-page.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'captureform/:contactId', component: CaptureformComponent},
   { path: 'contacts', component: ContactsComponent},
   { path: 'new-slide-page', component: NewSlidePageComponent},
-
+  { path: 'analytics', component: AnalyticsComponent},
  ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

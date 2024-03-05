@@ -18,8 +18,6 @@ export class ContactlistComponent implements OnInit {
   }
 
   fetchContactList() {
-    // Assuming you have a method in your service to retrieve the contact list
-    debugger
     this.Contact.getContact().subscribe(
       (contacts) => {
         this.contactList = contacts;

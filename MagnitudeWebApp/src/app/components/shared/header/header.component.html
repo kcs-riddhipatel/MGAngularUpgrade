@@ -1,22 +1,8 @@
-<!-- <div class="header">
-    <a href="#activity" class="logo"><img src="assets/mginnerlogo.png" alt="CompanyLogo"></a>
-    <div>
-        <span class="title">MagnitudeApp</span>
-    </div>
-    <div class="header-right">
-      <a class="active" href="#activity">Home</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
-      <div class="logout-icon" (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-    </div>
-    </div>
- 
-  </div>
-  
-  -->
+
   <div class="header">
     <a href="/activity" class="logo"><img src="https://magnitudemai.com/wp-content/uploads/2022/11/MAI-Logo-Colour-2-768x336.png" alt="CompanyLogo"></a>
+      <span *ngIf="isActivityScreen()" class="header-title" (click)="Activityload()">Activity</span> 
+      <span *ngIf="isAnalyticsScreen()" class="analytics-text" (click)="Analyticsload()">Analytics</span>
     <div class="header-right">
       <span class="notification-icon" >
         <mat-icon>notifications</mat-icon>
