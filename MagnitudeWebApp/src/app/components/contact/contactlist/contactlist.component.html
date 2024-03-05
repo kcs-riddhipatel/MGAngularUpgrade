@@ -1,5 +1,5 @@
 
-<div *ngIf="contactList.length > 0; else noContacts">
+<div *ngIf="contactList.length > 0; else noContacts" class="page">
     <table>
         <thead>
             <tr>
@@ -13,8 +13,8 @@
                 <td>{{ i + 1 }}</td>
                 <td (click)="Capture(contact.id)">{{ contact.firstName }} {{ contact.lastName }}</td>
                 <td>
-                    <button (click)="editContact(contact.id)">Edit</button>
-                    <button (click)="DeleteContact(contact.id)">Delete</button>
+                  <mat-icon class="editicon" (click)="editContact(contact.id)">edit</mat-icon>
+                  <mat-icon class="deleteicon" (click)="DeleteContact(contact.id)">delete</mat-icon>
                 </td>
             </tr>
         </tbody>

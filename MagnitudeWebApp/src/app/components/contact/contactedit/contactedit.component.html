@@ -1,5 +1,4 @@
 <div class="mainDiv">
-    
     <div class="container">
         <form #contactForm="ngForm" (ngSubmit)="contactForm.valid && editCategory()">
           <input type="hidden" id="contactId" name="contactId" [(ngModel)]="editedContact.id">
@@ -34,7 +33,12 @@
             Company Name is required.
           </div>
         
-          <input type="submit" value="Update">
+          <div class="col-12">
+            <div class="container-btn">
+              <button class="btn-info" type="submit" style="margin: 20px;">Update</button>
+              <button (click)="goBack()" class="btn-secondary ">Back</button>
+            </div>
+          </div>
         </form>
       </div>
   </div>

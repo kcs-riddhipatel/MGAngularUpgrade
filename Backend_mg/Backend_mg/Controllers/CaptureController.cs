@@ -25,7 +25,6 @@ namespace Backend_mg.Controllers
         {
             try
             {
-                int id = 0;
                 DateTime dateTime = DateTime.Now;
                 contactInformation.created_at = dateTime;
                 _context.capturetable.Add(contactInformation);

@@ -48,7 +48,7 @@
     <div class="horizontal-line"></div>
     <div class="flex-containerr">
       <div class="flex-itemm" *ngFor="let item of flexItems">
-        <div class="count-containerr">
+        <div class="count-containerr" (click)="Screen(item.text)">
           <mat-icon class="icon" [ngClass]="item.className">{{ item.icon }}</mat-icon>
           <span class="txt">{{ item.text }}</span>
           <span class="count">{{ item.count }}</span>

@@ -47,4 +47,10 @@ export class NewSlidePageComponent{
           this.flexItems = fields;
         });
       }
+      Screen(text: string) {
+        if(text == "Capture"){
+          this.router.navigate(['/contactlist']);
+        }
+        alert(text);
+      }      
 }
