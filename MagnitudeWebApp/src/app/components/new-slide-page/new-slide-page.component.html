@@ -1,6 +1,8 @@
 <div class="new-slide-page" [@slideInOut]>
   <div class="slide-content">
-    <button class="close-button" (click)="closePopup()"><mat-icon>cancel</mat-icon></button>
+    <button class="close-button" (click)="closePopup()">
+      <mat-icon>cancel</mat-icon>
+    </button>
     <div class="circle-container">
       <img [src]="image.src || 'placeholder-image.jpg'" />
     </div>
@@ -44,16 +46,23 @@
         <span class="txt countt">4</span>
       </div>
     </div>
-    <p class="activitytxt" style="margin-top: 100px;">Last 30 Days</p>
+    <p class="activitytxt" style="margin-top: 100px">Last 30 Days</p>
     <div class="horizontal-line"></div>
-    <div class="flex-containerr">
-      <div class="flex-itemm" *ngFor="let item of flexItems">
-        <div class="count-containerr" (click)="Screen(item.text)">
-          <mat-icon class="icon" [ngClass]="item.className">{{ item.icon }}</mat-icon>
-          <span class="txt">{{ item.text }}</span>
-          <span class="count">{{ item.count }}</span>
+    <div *ngIf="flexItems.length > 0">
+      <div class="flex-containerr">
+        <div class="flex-itemm" *ngFor="let item of flexItems">
+          <div class="count-containerr" (click)="Screen(item.text)">
+            <mat-icon class="icon" [ngClass]="item.className">{{
+              item.icon
+            }}</mat-icon>
+            <span class="txt">{{ item.text }}</span>
+            <span class="count">{{ item.count }}</span>
+          </div>
         </div>
       </div>
-    </div>    
+    </div>
+      <div *ngIf="flexItems.length === 0">
+        <div class="noData">No data found</div>
+      </div>
   </div>
 </div>

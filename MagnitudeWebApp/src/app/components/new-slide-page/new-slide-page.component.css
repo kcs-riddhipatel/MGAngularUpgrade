@@ -298,27 +298,16 @@
     flex-wrap: wrap;
     margin-top: 20px;
   }
-  
-  /* .flex-itemm {
-    flex: 1 1 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
-    border: 1px solid red;
-  } */
 
   .flex-itemm {
-    flex: 1 1 25%; /* Each item takes up 25% of the available space */
+    flex: 1 1 25%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 10px;
-    margin: 10px; /* Add margin to create space between items */
+    margin: 10px;
     box-sizing: border-box;
-    /* border: 1px solid red; */
     border-radius: 10px;
     background-color: rgb(186, 184, 184,0.5);
   }
@@ -344,3 +333,8 @@
 }
 
 
+.noData{
+  color: white;
+  text-align: center;
+  margin: 10px;
+}

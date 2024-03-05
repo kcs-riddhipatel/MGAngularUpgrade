@@ -18,15 +18,16 @@ export class HeaderComponent {
     this.router.navigate(['/activity']);
   }
   isActivityScreen() {
-    return  this.router.url == '/activity' || '/analytics' ;
+    return this.router.url === '/activity' || this.router.url === '/analytics';
   }
-  isAnalyticsScreen(){
-    return this.router.url == '/activity' || '/analytics';
-  }
+  isActivityActive: boolean = true;
+
   Activityload(){
+    this.isActivityActive = true;
     this.router.navigate(['/activity']);
   }
-  Analyticsload(){
+  Analyticsload(){  
+    this.isActivityActive = false;
     this.router.navigate(['/analytics']);
   }
 }

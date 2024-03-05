@@ -4,10 +4,9 @@ table {
   margin-top: 10px;
   background-color: rgba(2, 131, 151, 0.1);
   color: #333;
-  /* max-height: calc(100vh - 600px); */
 }
 .page{
-height:77%;
+  height:77%;
   overflow-y: auto;
 }
 th {
@@ -45,6 +44,7 @@ mat-icon {
 tr:hover {
   background-color: rgba(2, 131, 151, 0.2);
   color: white;
+  cursor: pointer;
 }
 
 td:hover {
