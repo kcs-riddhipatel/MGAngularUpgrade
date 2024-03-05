@@ -1,73 +1,77 @@
-/* Optional: Apply some basic styling to the table */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  /* Style table header */
-  th {
-    background-color: #f2f2f2;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  /* Style table rows */
-  td, th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  /* Highlight even rows with a different background color */
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Style buttons */
-  button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  /* Optional: Center content in the middle of the page */
-  div {
-    text-align: center;
-    margin: 50px;
-  }
-  
-  /* Optional: Style the "No contacts available" message */
-  p {
-    color: #555;
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: rgba(2, 131, 151, 0.1);
+  color: #333;
+  /* max-height: calc(100vh - 600px); */
+}
+.page{
+height:77%;
+  overflow-y: auto;
+}
+th {
+  background-color: rgba(2, 131, 151);
+  padding: 10px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  color: white;
+}
 
-  .topnav {
-    background-color: #5557e0;
-    overflow: hidden;
-    text-align: center;
-    position: sticky;
+td,
+th {
+  border: 1px solid rgba(2, 131, 151, 0.3);
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(2, 131, 151, 0.1);
+}
+
+mat-icon {
+  margin-right: 5px;
+}
+
+.editicon {
+  color: green;
+}
+
+.deleteicon {
+  color: red;
+}
+
+tr:hover {
+  background-color: rgba(2, 131, 151, 0.2);
+  color: white;
+}
+
+td:hover {
+  background-color: rgba(2, 131, 151, 0.2);
+  color: white;
+}
+
+div {
+  text-align: center;
+  margin: 50px;
+}
+
+p {
+  color: #555;
+}
+
+
+@media only screen and (max-width: 768px) {
+  table {
+    font-size: 12px; /* Decrease font size for smaller screens */
+  }
+  th{
     top: 0;
-    z-index: 100;
-    width: 100%;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    font-size: 17px;
-    text-decoration: none; /* Remove underlines from links */
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-    color: white;
+  }
+  th,
+  td {
+    
+    padding: 5px; /* Decrease padding for smaller screens */
+  }
 }

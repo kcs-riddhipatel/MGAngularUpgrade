@@ -22,6 +22,7 @@ import { ContactlistComponent } from './components/contact/contactlist/contactli
 import { ContacteditComponent } from './components/contact/contactedit/contactedit.component';
 import { CaptureformComponent } from './components/contact/captureform/captureform.component';
 import { NewSlidePageComponent } from './components/new-slide-page/new-slide-page.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { NewSlidePageComponent } from './components/new-slide-page/new-slide-pag
     ContactlistComponent,
     ContacteditComponent,
     CaptureformComponent,
-    NewSlidePageComponent
+    NewSlidePageComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,

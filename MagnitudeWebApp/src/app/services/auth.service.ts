@@ -43,7 +43,6 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/Contact`, contact);
   }
   getContact(): Observable<any> {
-    debugger
     return this.http.get<any[]>(`${this.apiUrl}/Contact`);
   }
  
