@@ -46,7 +46,14 @@
         <span class="txt countt">4</span>
       </div>
     </div>
-    <p class="activitytxt" style="margin-top: 100px">Last 30 Days</p>
+    
+    <div *ngIf="inCountData.length === 0 && outCountData.length === 0">
+      <div class="noData" style="margin-top: 30px">No data found</div>
+    </div>
+    
+    <canvas id="myChart" style="margin-top: 20px" width="400" height="200"></canvas>
+    
+    <p class="activitytxt" style="margin-top: 20px">Last 30 Days</p>
     <div class="horizontal-line"></div>
     <div *ngIf="flexItems.length > 0">
       <div class="flex-containerr">

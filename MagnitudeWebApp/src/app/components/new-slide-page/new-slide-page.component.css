@@ -163,7 +163,7 @@
   
   .outtext {
     font-size: 15px;
-    color: red;
+    color: rgb(255, 0, 0);
     margin-right: 10px;
     font-weight: bold;
   }
