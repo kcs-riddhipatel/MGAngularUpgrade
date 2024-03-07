@@ -30,4 +30,13 @@ export class HeaderComponent {
     this.isActivityActive = false;
     this.router.navigate(['/analytics']);
   }
+  toggleScreen(event: Event) {
+    const isChecked = (event.target as HTMLInputElement).checked;
+    if (isChecked) {
+      this.Analyticsload();
+    } else {
+      this.Activityload();
+    }
+  }
+  
 }

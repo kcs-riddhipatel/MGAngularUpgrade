@@ -62,30 +62,31 @@ export class NewSlidePageComponent{
 
       getData() {
         const requestData = {
-          ActivityId: 11859,
-          AppUserId: 5866,
-          IsOut: true
+            ActivityId: 11859,
+            AppUserId: 5866,
+            IsOut: true
         };
-      
+        
         this.http.post<any>('https://webapi.qc.magnitudefb.com/api/Common/GetInOutGraphData', requestData).subscribe(
-          (dataArray) => {
-            const data = dataArray[0];
-            console.log(data);
-            this.inCountData = data.InCount ? data.InCount.split(',').map(Number) : [];
-            this.outCountData = data.OutCount ? data.OutCount.split(',').map(Number) : [];
-            this.inCount = this.inCountData.reduce((a, b) => a + b, 0); 
-            this.outCount = this.outCountData.reduce((a, b) => a + b, 0); 
-            
-            this.createChart(this.inCountData, this.outCountData);
-          },
-          (error) => {
-            console.error('Error fetching data:', error);
-          }
+            (dataArray) => {
+                const data = dataArray[0];
+                console.log(data);
+                this.inCountData = data.InCount ? data.InCount.split(',').map(Number).reverse() : [];
+                this.outCountData = data.OutCount ? data.OutCount.split(',').map(Number).reverse() : [];
+                this.inCount = this.inCountData.reduce((a, b) => a + b, 0); 
+                this.outCount = this.outCountData.reduce((a, b) => a + b, 0); 
+                if(this.inCountData.length>0 || this.outCountData.length>0){
+                this.createChart(this.inCountData, this.outCountData);} 
+            },
+            (error) => {
+                console.error('Error fetching data:', error);
+            }
         );
-      } 
+    }
+     
       createChart(inCountData: number[], outCountData: number[]) {
         var ctx = document.getElementById('myChart') as HTMLCanvasElement | null;
-        
+    
         if (ctx) {
             var myChart = new Chart(ctx, {
                 type: 'line',

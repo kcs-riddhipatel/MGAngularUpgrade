@@ -70,3 +70,72 @@
   font-weight: 500;
 }
 
+.header-title {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 185px; 
+  height: 37px; 
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-radius: 34px;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 28px;
+  width: 85px;
+  left: 7px;
+  bottom: 4px;
+  background-color: #a9e3ec;
+  border-radius: 25px;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: white;
+}
+
+input:checked + .slider:before {
+  transform: translateX(85px); 
+}
+
+.label-left,
+.label-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Arial, sans-serif;
+  transition: .4s;
+  color: #035e6c;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.label-left {
+  left: 22px; 
+  /* color: white; */
+}
+
+.label-right {
+  right: 15px; 
+  /* color:#028397 */
+}

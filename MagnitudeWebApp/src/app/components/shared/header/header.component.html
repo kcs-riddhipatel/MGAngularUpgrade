@@ -2,8 +2,12 @@
   <div class="header">
     <a href="/activity" class="logo"><img src="https://magnitudemai.com/wp-content/uploads/2022/11/MAI-Logo-Colour-2-768x336.png" alt="CompanyLogo"></a>
     <div class="header-title">
-      <button class="button" [class.active]="isActivityActive" (click)="Activityload()">Activity</button>
-      <button class="button" [class.active]="!isActivityActive" (click)="Analyticsload()">Analytics</button>
+      <label class="switch">
+        <input type="checkbox" id="switcher" (change)="toggleScreen($event)">
+        <span class="slider"></span>
+        <span class="label-left">Activity</span>
+        <span class="label-right">Analytics</span>
+      </label>
     </div>
     <div class="header-right">
       <span class="notification-icon" >
@@ -17,7 +21,6 @@
       </span>
       <span class="logout-icon" (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
-      </span>
-      
+      </span>   
     </div>
   </div>
