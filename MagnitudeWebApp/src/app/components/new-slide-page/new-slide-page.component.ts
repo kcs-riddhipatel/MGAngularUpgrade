@@ -33,6 +33,9 @@ export class NewSlidePageComponent{
   @Input() activityName!: string;
   inCountData: number[] = [];
   outCountData: number[] = [];
+  inCount: number = 0;
+  outCount: number = 0;
+
   constructor(private route: ActivatedRoute, private router: Router,private service: AuthService,private http: HttpClient) { }
   @Output() close = new EventEmitter<void>();
 
@@ -46,7 +49,6 @@ export class NewSlidePageComponent{
   
       ngOnInit(): void {
         this.service.GetIconMaster().subscribe((fields: IconItem[]) => {
-          debugger
           this.flexItems = fields;
           console.log(fields);
         });
@@ -60,16 +62,20 @@ export class NewSlidePageComponent{
 
       getData() {
         const requestData = {
-          ActivityId: 12237,
-          AppUserId: 24701,
+          ActivityId: 11859,
+          AppUserId: 5866,
           IsOut: true
         };
       
-        this.http.post<any>('http://webapi.test2.magnitudefb.com/api/Common/GetInOutGraphData', requestData).subscribe(
+        this.http.post<any>('https://webapi.qc.magnitudefb.com/api/Common/GetInOutGraphData', requestData).subscribe(
           (dataArray) => {
             const data = dataArray[0];
+            console.log(data);
             this.inCountData = data.InCount ? data.InCount.split(',').map(Number) : [];
             this.outCountData = data.OutCount ? data.OutCount.split(',').map(Number) : [];
+            this.inCount = this.inCountData.reduce((a, b) => a + b, 0); 
+            this.outCount = this.outCountData.reduce((a, b) => a + b, 0); 
+            
             this.createChart(this.inCountData, this.outCountData);
           },
           (error) => {
@@ -77,69 +83,70 @@ export class NewSlidePageComponent{
           }
         );
       } 
-
       createChart(inCountData: number[], outCountData: number[]) {
         var ctx = document.getElementById('myChart') as HTMLCanvasElement | null;
         
-        // Check if ctx is not null before creating the chart
         if (ctx) {
-          var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: Array.from({ length: inCountData.length }, (_, i) => (i + 1).toString()), // Generate labels dynamically
-              datasets: [
-                {
-                  label: 'Out Count', // Set label text directly
-                  data: outCountData,
-                  backgroundColor: 'rgba(255, 0, 0, 0.2)', // Change background color to red
-                  borderColor: 'rgba(255, 0, 0, 1)', // Change border color to red
-                  borderWidth: 1,
-                  pointBackgroundColor: 'rgba(255, 0, 0, 1)', // Change point color to red
-                  pointBorderColor: 'rgba(255, 0, 0, 1)' // Change point border color to red
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({ length: inCountData.length }, (_, i) => (i + 1).toString()),
+                    datasets: [
+                        {
+                            label: 'Out Count', 
+                            data: outCountData,
+                            backgroundColor: 'rgba(255, 0, 0, 0.2)', 
+                            borderColor: 'rgba(255, 0, 0, 1)',
+                            borderWidth: 1,
+                            pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+                            pointBorderColor: 'rgba(255, 0, 0, 1)'
+                        },
+                        {
+                            label: 'In Count',
+                            data: inCountData,
+                            backgroundColor: 'rgba(20, 169, 20, 0.2)',
+                            borderColor: 'rgba(20, 169, 20, 1)',
+                            borderWidth: 1,
+                            pointBackgroundColor: 'rgba(20, 169, 20, 1)',
+                            pointBorderColor: 'rgba(20, 169, 20, 1)'
+                        }
+                    ]
                 },
-                {
-                  label: 'In Count', // Set label text directly
-                  data: inCountData,
-                  backgroundColor: 'rgba(20, 169, 20, 0.2)', // Change background color to green
-                  borderColor: 'rgba(20, 169, 20, 1)', // Change border color to green
-                  borderWidth: 1,
-                  pointBackgroundColor: 'rgba(20, 169, 20, 1)', // Change point color to green
-                  pointBorderColor: 'rgba(20, 169, 20, 1)' // Change point border color to green
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                color: 'white' 
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'white' 
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Last 30 Days', 
+                            color: 'white', 
+                            position: 'bottom', 
+                            font: {
+                              size: 18 
+                          }
+                        },
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    }
                 }
-             ]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  ticks: {
-                    color: 'white' // Color of y-axis labels
-                  }
-                },
-                x: {
-                  ticks: {
-                    color: 'white' // Color of x-axis labels
-                  }
-                }
-              },
-              plugins: {
-                tooltip: {
-                  callbacks: {
-                    labelColor: (context: any) => ({
-                      borderColor: 'white',
-                      backgroundColor: 'white'
-                    })
-                  }
-                }
-              }
-            }
-          });
+            });
         } else {
-          console.error("Could not find canvas element with id 'myChart'");
+            console.error("Could not find canvas element with id 'myChart'");
         }
-      }
-      
-      
-      
-  
+    }
+    
 }
