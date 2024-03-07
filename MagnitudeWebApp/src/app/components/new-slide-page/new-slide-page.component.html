@@ -1,12 +1,8 @@
-<div class="new-slide-page" [@slideInOut]>
-  <div class="slide-content">
-    <button class="close-button" (click)="closePopup()">
-      <mat-icon>cancel</mat-icon>
-    </button>
+<div class="new-slide-page full-page" [@slideInOut]>
+  <div class="activity-section">
     <div class="circle-container">
-      <img [src]="image.src || 'placeholder-image.jpg'" />
+      <img [src]="image.src || 'assets/A1.jpg'" />
     </div>
-
     <p class="activitytxt">{{ activityName }}</p>
     <div class="flex-container">
       <div class="flex-item">
@@ -33,43 +29,39 @@
         <p class="text">Unresolved</p>
       </div>
     </div>
-    <div class="horizontal-line"></div>
+    <div class="horizontal-line"></div> 
+    <div class="flex-containerr">
+      <div class="flex-itemm" *ngFor="let item of flexItems">
+        <div class="count-containerr" (click)="Screen(item.text)">
+          <mat-icon class="icon" [ngClass]="item.className">{{ item.icon }}</mat-icon>
+          <span class="txt">{{ item.text }}</span>
+          <span class="count">{{ item.count }}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="flexItems.length === 0" class="noData">No data found</div>
+  
+  </div>
+  <div class="chart-section">
     <div class="row-container">
       <div class="count-container">
         <mat-icon class="out">launch</mat-icon>
         <span class="outtext">OUT</span>
-        <span class="txt countt">3</span>
+        <span class="txt countt">{{ outCount }}</span>
       </div>
       <div class="count-container">
         <mat-icon class="in">transit_enterexit</mat-icon>
         <span class="intext">IN</span>
-        <span class="txt countt">4</span>
+        <span class="txt countt">{{ inCount }}</span>
       </div>
     </div>
-    
-    <div *ngIf="inCountData.length === 0 && outCountData.length === 0">
-      <div class="noData" style="margin-top: 30px">No data found</div>
-    </div>
-    
-    <canvas id="myChart" style="margin-top: 20px" width="400" height="200"></canvas>
-    
-    <p class="activitytxt" style="margin-top: 20px">Last 30 Days</p>
-    <div class="horizontal-line"></div>
-    <div *ngIf="flexItems.length > 0">
-      <div class="flex-containerr">
-        <div class="flex-itemm" *ngFor="let item of flexItems">
-          <div class="count-containerr" (click)="Screen(item.text)">
-            <mat-icon class="icon" [ngClass]="item.className">{{
-              item.icon
-            }}</mat-icon>
-            <span class="txt">{{ item.text }}</span>
-            <span class="count">{{ item.count }}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-      <div *ngIf="flexItems.length === 0">
-        <div class="noData">No data found</div>
-      </div>
+    <canvas id="myChart" width="450" height="300"></canvas>
+    <!-- <div class="horizontal-line"></div> -->
   </div>
+  
+  <button class="close-button" (click)="closePopup()">
+    <mat-icon>cancel</mat-icon>
+  </button>
 </div>
+
+
