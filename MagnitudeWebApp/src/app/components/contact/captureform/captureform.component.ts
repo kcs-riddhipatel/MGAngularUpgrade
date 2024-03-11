@@ -9,11 +9,29 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./captureform.component.css']
 })
 export class CaptureformComponent {
-  newContact: any = {};
+  newContact: any = {  };
+  newCapture: {  questionID: string, fieldID: string, response: any  }[] = [];
   contactList: any[] = [];
   InputTypes: any[] =[];
+  dynamicInputs: any[] = [];
   matchingField : any;
+  Dropdown: string | undefined;
+  inputValue: string = '';
+  radioOptions = [
+    'Option 1',
+    'Option 2',
+    'Option 3'
+  ];
+  checkboxOptions = [
+    'I agree',
+    'Not like this',
+    'Other'
+  ];
+  selectedradioOption: string | undefined;
+  selectedCheckboxes: { [key: string]: boolean } = {};
+  DropDownOptions = ['Volvo', 'Saab', 'Mercedes', 'Audi'];
   
+
   constructor( private Contact: AuthService,
     private router: Router,private route: ActivatedRoute){
 
@@ -30,12 +48,10 @@ export class CaptureformComponent {
       );
       this.Contact.GetDynamicFields().subscribe((fields: any[]) => {
         this.InputTypes = fields;
-        console.log("aa : ", this.InputTypes)
       });
       this.Contact.GetQuestion().subscribe(
         (contacts) => {
           this.contactList = contacts;
-          console.log(this.contactList)
         },
         (error) => {
           console.error('Error fetching category data:', error);
@@ -43,14 +59,15 @@ export class CaptureformComponent {
       );
   }
   addCapture(){
-   
+    debugger
+    console.log("Selected radio option: ", this.selectedradioOption);
+    console.log("Selected checkboxes: ", this.selectedCheckboxes);
+    console.log("Selected dropdown option: ", this.Dropdown);
+    console.log("Selected dropdown option: ", this.newCapture);
   }
   
   getInputType(inputTypeID: number): string {
-    console.log(this.InputTypes)
     this.matchingField = this.InputTypes.find(field => field.id === inputTypeID);
-
-
     if (this.matchingField) {
       if (this.matchingField.field_type === 'radio') {
         return 'radio';
@@ -59,13 +76,9 @@ export class CaptureformComponent {
       } else {
         return this.matchingField.field_type; 
       }
-      
     } else {
       return 'text';
     }
-    
   }
-
-  
   
 }

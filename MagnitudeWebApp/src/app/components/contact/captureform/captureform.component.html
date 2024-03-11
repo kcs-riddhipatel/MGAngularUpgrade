@@ -17,32 +17,32 @@
 
         <div class="form-container">
             <div *ngIf="contactList.length > 0; else noContacts">
-                <form #contactForm="ngForm" (ngSubmit)="contactForm.valid && addCapture()">
-                    <ng-container *ngFor="let contact of contactList">
+                <form #contactForm="ngForm" (ngSubmit)="addCapture()">
+                    <ng-container *ngFor="let contact of contactList;let i = index;">
                         <div class="form-item">
                             <label>{{ contact.questionText }}</label>
                             <ng-container *ngIf="getInputType(contact.inputTypeID) === 'radio'">
-                                <input type="radio" name="gender" value="male"> Male
-                                <input type="radio" name="gender" value="female"> Female
-                                <input type="radio" name="gender" value="other"> Other
+                                <div *ngFor="let option of radioOptions">
+                                    <input type="radio" name="radioGroup" [value]="option" [(ngModel)]="selectedradioOption" [(ngModel)]="newCapture[contact.questionID]">
+                                    {{ option }}
+                                </div>
                             </ng-container>
                             <ng-container *ngIf="getInputType(contact.inputTypeID) === 'checkbox'">
-                                <input type="checkbox" name="agree" value="agree"> I agree
-                                <input type="checkbox" name="agree" value="agree"> Not like this
-                                <input type="checkbox" name="agree" value="agree"> Other
+                                <div *ngFor="let option of checkboxOptions">
+                                    <input type="checkbox" name="agree" [value]="option" [(ngModel)]="selectedCheckboxes[option]" >
+                                    {{ option }}
+                                  </div>
                             </ng-container>
                             <ng-container *ngIf="getInputType(contact.inputTypeID) === 'select'">
-                                <select name="cars" id="cars">
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                    </select>
+                                <select name="Dropdown" id="Dropdown" [(ngModel)]="Dropdown" [(ngModel)]="newCapture[contact.questionID]">
+                                    <option *ngFor="let option of DropDownOptions" [value]="option">{{ option }}</option>
+                                  </select>
                             </ng-container>
                             <ng-container
                                 *ngIf="getInputType(contact.inputTypeID) !== 'radio' && getInputType(contact.inputTypeID) !== 'checkbox' && getInputType(contact.inputTypeID) !== 'select'">
-                                <input [type]="getInputType(contact.inputTypeID)" class="form-input"
-                                    placeholder="{{ contact.questionText }}" required>
+                                <input [type]="getInputType(contact.inputTypeID)" class="form-input" [id] = "'randomNumber_' + i"
+                                    placeholder="{{ contact.questionText }}" required [name]="'randomNumber_' + i"  [(ngModel)]="newCapture[contact.questionID]">
+                          
                             </ng-container>
                         </div>
                     </ng-container>

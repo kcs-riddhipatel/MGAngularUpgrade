@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Backend_mg.Model;
 using System.Collections.Generic;
+
 namespace Backend_mg.Model
 {
     public class DbCotext : DbContext
@@ -15,6 +16,7 @@ namespace Backend_mg.Model
         public DbSet<QuizQuestions> QuizQuestions { get; set; }
 
         public DbSet<IconMaster> IconMaster { get; set; }
+        public DbSet<FormResponses> FormResponses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,6 +26,7 @@ namespace Backend_mg.Model
             modelBuilder.Entity<QuizQuestions>().ToTable("QuizQuestions");
 
             modelBuilder.Entity<IconMaster>().ToTable("IconMaster");
+            modelBuilder.Entity<FormResponses>().ToTable("FormResponses");
         }
 
     }
