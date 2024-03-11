@@ -18,6 +18,7 @@
         <div class="form-container">
             <div *ngIf="contactList.length > 0; else noContacts">
                 <form #contactForm="ngForm" (ngSubmit)="addCapture()">
+                    <input type="hidden" name="contactId" [value]="contactId">
                     <ng-container *ngFor="let contact of contactList;let i = index;">
                         <div class="form-item">
                             <label>{{ contact.questionText }}</label>

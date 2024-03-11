@@ -10,13 +10,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class CaptureformComponent {
   newContact: any = {  };
-  newCapture: {  questionID: string, fieldID: string, response: any  }[] = [];
+  // newCapture: {  questionID: string, fieldID: string, response: any  }[] = [];
+  newCapture: any = {  };
   contactList: any[] = [];
   InputTypes: any[] =[];
   dynamicInputs: any[] = [];
   matchingField : any;
   Dropdown: string | undefined;
   inputValue: string = '';
+  contactId: any;
   radioOptions = [
     'Option 1',
     'Option 2',
@@ -41,6 +43,7 @@ export class CaptureformComponent {
       this.Contact.getContactId(contactId).subscribe(
         (Contact) => {
           this.newContact = { ...Contact };
+          this.contactId = contactId; 
         },
         (error) => {
           console.error('Error fetching category data:', error);
@@ -58,14 +61,26 @@ export class CaptureformComponent {
         },
       );
   }
-  addCapture(){
-    debugger
-    console.log("Selected radio option: ", this.selectedradioOption);
-    console.log("Selected checkboxes: ", this.selectedCheckboxes);
-    console.log("Selected dropdown option: ", this.Dropdown);
-    console.log("Selected dropdown option: ", this.newCapture);
+
+  addCapture() {
+    console.log('Form data:', this.newCapture); 
+    const formResponses = Object.keys(this.newCapture).map(key => ({
+      QuestionID: parseInt(key),
+      response_value: this.newCapture[key],
+      contact_id: this.contactId 
+    }));
+    this.Contact.addCaptureform(formResponses).subscribe(
+      response => {
+        alert("Data added")
+        console.log('Response from API:', response); 
+        this.newCapture = {};
+      },
+      error => {
+        console.error('Error calling API:', error); 
+      }
+    );
   }
-  
+
   getInputType(inputTypeID: number): string {
     this.matchingField = this.InputTypes.find(field => field.id === inputTypeID);
     if (this.matchingField) {
