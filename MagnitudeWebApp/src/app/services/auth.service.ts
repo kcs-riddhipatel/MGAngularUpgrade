@@ -71,5 +71,11 @@ export class AuthService {
   GetIconMaster(): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}/IconMaster`);
   }
+  GetFormResponses(): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}/FormResponses`);
+  }
+  PostFormResponses(newCapture: {questionID: string; fieldID: string; response: any; }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/FormResponses`, newCapture);
+  }
 }
 

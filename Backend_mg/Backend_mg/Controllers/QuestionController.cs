@@ -18,7 +18,8 @@ namespace Backend_mg.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<QuizQuestions>>> GetQuestion()
         {
-            return await _context.QuizQuestions.ToListAsync();
+            return await _context.QuizQuestions.Where(q => q.FormID == 1)
+        .ToListAsync(); ;
         }
     }
 }
