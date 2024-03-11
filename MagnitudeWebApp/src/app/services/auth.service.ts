@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
@@ -76,6 +76,11 @@ export class AuthService {
   }
   PostFormResponses(newCapture: {questionID: string; fieldID: string; response: any; }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/FormResponses`, newCapture);
+  }
+  addCaptureform(formResponses: any[]): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    console.log(formResponses);
+    return this.http.post<any>(`${this.apiUrl}/FormResponses`, formResponses, { headers });
   }
 }
 

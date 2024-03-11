@@ -11,7 +11,7 @@ namespace Backend_mg.Model
         public int QuestionID { get; set; }
         public int field_id { get; set; }
         public int contact_id { get; set; }
-        public string response_value { get; set; }
+        public string? response_value { get; set; }
         public DateTime submission_date { get; set; }
     }
 }
