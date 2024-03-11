@@ -8,5 +8,6 @@ namespace Backend_mg.Model
         public int QuestionID { get; set; }
         public string QuestionText { get; set; }
         public int InputTypeID { get; set; }
+        public int FormID { get; set; }
     }
 }
