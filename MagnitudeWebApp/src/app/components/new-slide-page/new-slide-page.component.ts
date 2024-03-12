@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient } from '@angular/common/http';
-import { Chart } from 'chart.js';
+import {  NgZone } from '@angular/core';
+import Chart from 'chart.js/auto';
+
 interface IconItem {
   icon: string;
   text: string;
@@ -36,7 +38,7 @@ export class NewSlidePageComponent{
   inCount: number = 0;
   outCount: number = 0;
 
-  constructor(private route: ActivatedRoute, private router: Router,private service: AuthService,private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private router: Router,private service: AuthService,private http: HttpClient,private ngZone: NgZone) { }
   @Output() close = new EventEmitter<void>();
 
   closePopup() {
@@ -76,7 +78,10 @@ export class NewSlidePageComponent{
                 this.inCount = this.inCountData.reduce((a, b) => a + b, 0); 
                 this.outCount = this.outCountData.reduce((a, b) => a + b, 0); 
                 if(this.inCountData.length>0 || this.outCountData.length>0){
-                this.createChart(this.inCountData, this.outCountData);} 
+                this.ngZone.runOutsideAngular(() => {
+                this.createChart(this.inCountData, this.outCountData);
+              });
+              } 
             },
             (error) => {
                 console.error('Error fetching data:', error);
@@ -84,70 +89,81 @@ export class NewSlidePageComponent{
         );
     }
      
-      createChart(inCountData: number[], outCountData: number[]) {
-        var ctx = document.getElementById('myChart') as HTMLCanvasElement | null;
-    
-        if (ctx) {
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: Array.from({ length: inCountData.length }, (_, i) => (i + 1).toString()),
-                    datasets: [
-                        {
-                            label: 'Out Count', 
-                            data: outCountData,
-                            backgroundColor: 'rgba(255, 0, 0, 0.2)', 
-                            borderColor: 'rgba(255, 0, 0, 1)',
-                            borderWidth: 1,
-                            pointBackgroundColor: 'rgba(255, 0, 0, 1)',
-                            pointBorderColor: 'rgba(255, 0, 0, 1)'
-                        },
-                        {
-                            label: 'In Count',
-                            data: inCountData,
-                            backgroundColor: 'rgba(20, 169, 20, 0.2)',
-                            borderColor: 'rgba(20, 169, 20, 1)',
-                            borderWidth: 1,
-                            pointBackgroundColor: 'rgba(20, 169, 20, 1)',
-                            pointBorderColor: 'rgba(20, 169, 20, 1)'
-                        }
-                    ]
+  createChart(inCountData: number[], outCountData: number[]) {
+    var ctx = (document.getElementById('myChart') as HTMLCanvasElement | null)?.getContext('2d');
+   
+    if (ctx) {
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({ length: inCountData.length }, (_, i) => (i + 1).toString()),
+                datasets: [
+                    {
+                        label: 'Out Count',
+                        data: outCountData,
+                        backgroundColor: 'rgba(255, 0, 0, 0.2)',
+                        borderColor: 'rgba(255, 0, 0, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(255, 0, 0, 1)',
+                        pointBorderColor: 'rgba(255, 0, 0, 1)'
+                    },
+                    {
+                        label: 'In Count',
+                        data: inCountData,
+                        backgroundColor: 'rgba(20, 169, 20, 0.2)',
+                        borderColor: 'rgba(20, 169, 20, 1)',
+                        borderWidth: 1,
+                        pointBackgroundColor: 'rgba(20, 169, 20, 1)',
+                        pointBorderColor: 'rgba(20, 169, 20, 1)'
+                    }
+                ]
+            },
+            options: {
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuart'
                 },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: 'white' 
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: 'white' 
-                            }
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#025764'
                         }
                     },
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Last 30 Days', 
-                            color: 'white', 
-                            position: 'bottom', 
-                            font: {
-                              size: 18 
-                          }
-                        },
-                        legend: {
-                            labels: {
-                                color: 'white'
-                            }
+                    x: {
+                        ticks: {
+                            color: '#025764'
                         }
                     }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Last 30 Days',
+                        color: '#025764',
+                        position: 'bottom',
+                        font: {
+                            size: 20
+                        }
+                    },
+                    legend: {
+                        labels: {
+                            color: '#025764'
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        titleColor: 'white',
+                        bodyColor: 'white',
+                        borderColor: 'white',
+                        borderWidth: 1,
+                        caretPadding: 10
+                    }
                 }
-            });
-        } else {
-            console.error("Could not find canvas element with id 'myChart'");
-        }
+            }
+        });
+    } else {
+        console.error("Could not find canvas element with id 'myChart'");
     }
-    
+}
 }

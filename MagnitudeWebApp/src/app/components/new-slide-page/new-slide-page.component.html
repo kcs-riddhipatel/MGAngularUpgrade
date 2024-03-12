@@ -4,6 +4,7 @@
       <img [src]="image.src || 'assets/A1.jpg'" />
     </div>
     <p class="activitytxt">{{ activityName }}</p>
+    <!-- <div class="horizontal-line"></div>  -->
     <div class="flex-container">
       <div class="flex-item">
         <div class="count-container">
@@ -29,18 +30,18 @@
         <p class="text">Unresolved</p>
       </div>
     </div>
-    <div class="horizontal-line"></div> 
+ 
     <div class="flex-containerr">
       <div class="flex-itemm" *ngFor="let item of flexItems">
         <div class="count-containerr" (click)="Screen(item.text)">
           <mat-icon class="icon" [ngClass]="item.className">{{ item.icon }}</mat-icon>
           <span class="txt">{{ item.text }}</span>
-          <span class="count">{{ item.count }}</span>
+          <span class="count" *ngIf="item.count !== 0">{{ item.count }}</span>
         </div>
       </div>
     </div>
     <div *ngIf="flexItems.length === 0" class="noData">No data found</div>
-  
+ 
   </div>
   <div class="chart-section">
     <div class="row-container">
@@ -58,10 +59,8 @@
     <canvas id="myChart" width="450" height="300"></canvas>
     <!-- <div class="horizontal-line"></div> -->
   </div>
-  
+ 
   <button class="close-button" (click)="closePopup()">
     <mat-icon>cancel</mat-icon>
   </button>
 </div>
-
-

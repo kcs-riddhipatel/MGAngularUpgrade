@@ -8,17 +8,17 @@
   overflow-y: auto;
   background-color: rgb(3, 57, 78);
 }
-
+ 
 .full-page {
   display: flex;
   align-items: center;
 }
-
+ 
 .activity-section {
   flex: 1;
   padding: 20px;
 }
-
+ 
 .chart-section {
   flex: 1;
   padding: 20px;
@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: center;
 }
-
+ 
 .close-button {
   position: absolute;
   top: 10px;
@@ -36,7 +36,7 @@
   cursor: pointer;
   color: rgb(185, 185, 185);
 }
-
+ 
 .circle-container {
   width: 150px;
   height: 150px;
@@ -48,29 +48,29 @@
   padding: 10px;
   margin: 0 auto;
 }
-
+ 
 .circle-container img {
   max-width: 100%;
   max-height: 100%;
 }
-
+ 
 .horizontal-line {
   height: 1px;
   width: 0;
   background-color: white;
-  margin: 10px auto; 
-  animation: expand 3.5s ease forwards; 
+  margin: 10px auto;
+  animation: expand 3.5s ease forwards;
 }
-
+ 
 @keyframes expand {
   0% {
-    width: 0; 
+    width: 0;
   }
   100% {
-    width: 100%; 
+    width: 80%;
   }
 }
-
+ 
 .row-container {
   display: flex;
   justify-content: center;
@@ -78,113 +78,118 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+ 
 .row-container .count-container {
   margin: 0 30px;
 }
-
+ 
 .row-container .count-container span {
   margin-left: 5px;
 }
-
+ 
 .vertical-line {
   width: 1px;
   height: 80px;
-  background-color: white;
+  /* background-color: white; */
+ background: rgb(170, 170, 170, 0.774);
 }
-
+ 
 .flex-container {
   /* display: flex;
   justify-content: center;
   align-items: center;
    */
    display: flex;
-   justify-content: center;
+   justify-content: space-evenly;
    align-items: center;
-   border: 2px solid white;
-   max-width: fit-content;
+   /* border: 2px solid rgba(170, 170, 170, 0.774) ; */
+   /* max-width: fit-content; */
    left: 50px;
-   background: rgba(255, 250, 240, 0.5);
+   /* background: rgba(255, 250, 240, 0.5); */
    border-radius: 10px;
-   margin-left: 20%;
+   /* margin-left: 20%; */
+   width: 70%;
+   margin-left: 15%;
+   margin-top: 30px;
 }
-
+ 
 .flex-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 20px;
 }
-
+ 
 .count-container {
   display: flex;
   align-items: center;
 }
-
+ 
 .flex-item p {
   margin-top: 10px;
 }
-
+ 
 .txt {
   font-size: 15px;
   color: white;
+  margin-right: 15PX;
 }
-
+ 
 .out {
   color: red;
   font-size: 18px;
 }
-
+ 
 .in {
   color: rgb(57, 200, 57);
   font-size: 18px;
 }
-
+ 
 .outtext {
   font-size: 15px;
   color: rgb(255, 0, 0);
   margin-right: 10px;
   font-weight: bold;
 }
-
+ 
 .intext {
   font-size: 15px;
   color: rgb(20, 169, 20);
   margin-right: 10px;
   font-weight: bold;
 }
-
+ 
 .count {
   padding: 0px 15px;
   border-radius: 30px;
   background-color: red;
   color: white;
 }
-
+ 
 .countt {
   padding: 0px 15px;
   border-radius: 30px;
   background-color: rgb(224, 222, 222, 0.6);
   color: white;
 }
-
+ 
 .chat {
   color: blue;
 }
-
+ 
 .pendinglist {
   color: green;
 }
-
+ 
 .file {
   color: red;
 }
-
+ 
 .text {
   /* color: rgb(183, 180, 180); */
   color: white;
 }
-
+ 
 .container {
   display: flex;
   justify-content: center;
@@ -192,7 +197,7 @@
   height: 15vh;
   padding: 0 160px;
 }
-
+ 
 .flex-container-2x2 {
   display: flex;
   flex-wrap: wrap;
@@ -200,7 +205,7 @@
   width: 100%;
   margin-top: 119px;
 }
-
+ 
 .flex-item-2x2 {
   flex: 1 0 calc(50% - 30px);
   padding: 5px;
@@ -213,12 +218,12 @@
   margin: 5px;
   flex-direction: column;
 }
-
+ 
 .count-container {
   display: flex;
   align-items: center;
 }
-
+ 
 .icon {
   font-size: 24px;
   padding: 5px;
@@ -228,27 +233,27 @@
   color: white;
   border-radius: 20%;
 }
-
+ 
 .captureicon {
   background-color: rgb(48, 181, 205);
   color: white;
 }
-
+ 
 .Feedbackicon {
   background-color: rgb(9, 115, 186);
   color: white;
 }
-
+ 
 .Analysisicon {
   background-color: rgb(25, 196, 73);
   color: white;
 }
-
+ 
 .Drafticon {
   background-color: rgb(20, 158, 139);
   color: white;
 }
-
+ 
 .count-container .txtt {
   font-size: 15px;
   padding: 0px 10px;
@@ -257,21 +262,21 @@
   color: white;
   margin-left: 35px;
 }
-
+ 
 .textt {
   font-size: 14px;
   color: white;
   margin: 0;
 }
-
+ 
 .flex-containerr {
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
 }
-
+ 
 .flex-itemm {
-  flex: 1 1 25%;
+  flex: 1 1 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -282,27 +287,22 @@
   border-radius: 10px;
   background-color: rgb(186, 184, 184, 0.5);
 }
-
+ 
 .count-containerr {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-
+ 
 .icon {
   font-size: 24px;
   margin-right: 10px;
 }
-
-.txt {
-  font-size: 18px;
-  margin-right: 15px;
-}
-
+ 
 .count {
   font-size: 18px;
 }
-
+ 
 .noData {
   color: white;
   text-align: center;
@@ -314,4 +314,9 @@
   font-size: 20px;
   margin-top: 10px;
 }
-
+ 
+#myChart {
+  background-color: #e6fbfe;
+  border-radius: 10px;
+  padding: 30px;
+}
