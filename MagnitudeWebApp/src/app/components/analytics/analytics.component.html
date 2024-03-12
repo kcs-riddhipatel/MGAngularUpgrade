@@ -1,1 +1,15 @@
-<canvas id="analyticsChart"></canvas>
+<div class="activities-container">
+    <div *ngFor="let activity of userWiseActivityList" class="activity-card">
+      <div class="activity-image">
+        <img [src]="activity.ActivityImagePath" alt="Activity Image">
+      </div>
+      <div class="activity-details">
+        <p class="activity-name">{{ activity.ActivityName }}</p>
+        <p class="activity-id" style="display: none;">{{ activity.ActivityId }}</p>
+        <p class="activity-type" style="display: none;">{{ activity.ActivityType }}</p>
+      </div>
+      <div class="navigation-icon">
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </div>
+    </div>
+  </div>
