@@ -64,6 +64,7 @@ export class CaptureformComponent {
 
   addCapture() {
     console.log('Form data:', this.newCapture); 
+    console.log('checkbox', this.selectedCheckboxes);
     const formResponses = Object.keys(this.newCapture).map(key => ({
       QuestionID: parseInt(key),
       response_value: this.newCapture[key],
