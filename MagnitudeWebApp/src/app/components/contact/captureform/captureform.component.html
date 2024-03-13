@@ -16,8 +16,8 @@
         </h2>
 
         <div class="form-container">
-            <div *ngIf="contactList.length > 0; else noContacts">
-                <form #contactForm="ngForm" (ngSubmit)="addCapture()">
+            <div *ngIf="contactList.length  > 0; else noContacts">
+                <form #contactForm="ngForm" (ngSubmit)="contactForm.valid &&                                                                                                                  addCapture()">
                     <input type="hidden" name="contactId" [value]="contactId">
                     <ng-container *ngFor="let contact of contactList;let i = index;">
                         <div class="form-item">
@@ -42,8 +42,10 @@
                             <ng-container
                                 *ngIf="getInputType(contact.inputTypeID) !== 'radio' && getInputType(contact.inputTypeID) !== 'checkbox' && getInputType(contact.inputTypeID) !== 'select'">
                                 <input [type]="getInputType(contact.inputTypeID)" class="form-input" [id] = "'randomNumber_' + i"
-                                    placeholder="{{ contact.questionText }}" required [name]="'randomNumber_' + i"  [(ngModel)]="newCapture[contact.questionID]">
-                          
+                                    placeholder="{{ contact.questionText }}" required [name]="'randomNumber_' + i"  [(ngModel)]="newCapture[contact.questionID]" required>
+                                    <div class="text-danger" *ngIf="contactForm.controls['randomNumber_' + i].hasError('required') && (contactForm.controls['randomNumber_' + i].touched || contactForm.submitted)">
+                                        {{ contact.questionText }} is required.
+                                    </div>                                    
                             </ng-container>
                         </div>
                     </ng-container>
